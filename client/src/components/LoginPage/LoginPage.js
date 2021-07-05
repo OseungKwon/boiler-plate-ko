@@ -1,34 +1,39 @@
 import React, { useState } from 'react'
-// import Axios from 'axios';
+import Axios from 'axios'
 import { useDispatch } from 'react-redux';
 import { loginUser } from '../../store/actions/user_action';
 import { withRouter } from 'react-router-dom';
 
-import IdInsert from './IdInsert';
-import PwInsert from './PwInsert';
+
 import './LoginPage.css';
 
+import { CgLock } from "react-icons/cg";
+import './PwInsert.css';
 
-const LoginPage = (props) => {
+import { IoPersonOutline } from "react-icons/io5";
+import './IdInsert.css';
+
+
+function LoginPage(props) {
     const dispatch = useDispatch();
 
-    const [userid, setUserid] = useState("");
-    const [userpw, setUserpw] = useState("");
+    const [Email, setEmail] = useState("")
+    const [Password, setPassword] = useState("")
 
     const onEmailHandler = (event) => {
-        setUserid(event.currentTarget.value)
+        setEmail(event.target.value)
     }
 
     const onPasswordHandler = (event) => {
-        setUserpw(event.currentTarget.value)
+        setPassword(event.currentTarget.value)
     }
 
     const onSubmitHandler = (event) => {
         event.preventDefault();
 
         let body = {
-            userID: userid,
-            userPW: userpw
+            email: Email,
+            password: Password
         }
 
         dispatch(loginUser(body))
@@ -36,20 +41,28 @@ const LoginPage = (props) => {
                 if (response.payload.loginSuccess) {
                     props.history.push('/')
                 } else {
-                    alert('Error˝')
+                    alert('Error')
                 }
             })
 
 
     }
+    //             
 
     return (
         <div className="wrapper">
             <form className="LoginPage" onSubmit={onSubmitHandler}>
                 <div className="LoginTitle">Todo List</div>
-                <IdInsert onChange={onEmailHandler} />
-                <PwInsert onChange={onPasswordHandler} />
 
+                <div className="IdInsert">
+                    <IoPersonOutline />
+                    <input type="email" value={Email} onChange={onEmailHandler} placeholder="이메일" />
+                </div>
+
+                <div className="PwInsert">
+                    <CgLock />
+                    <input type="password" value={Password} onChange={onPasswordHandler} placeholder="비밀번호" />
+                </div>
                 <button className="login_btn" type="submit">로그인</button>
             </form>
         </div>

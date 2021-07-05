@@ -1,16 +1,20 @@
-const USER_LOGIN = "login_user";
-const REGISTER_USER = "register_user";
-const AUTH_USER = "auth_user";
+import {
+    LOGIN_USER,
+    REGISTER_USER,
+    AUTH_USER
+} from '../actions/types';
 
-// 리듀서 함수 생성
 export default function (state = {}, action) {
     switch (action.type) {
-        case USER_LOGIN:
+        case LOGIN_USER:
             return { ...state, loginSuccess: action.payload }
+            break;
         case REGISTER_USER:
             return { ...state, register: action.payload }
+            break;
         case AUTH_USER:
             return { ...state, userData: action.payload }
+            break;
         default:
             return state;
     }

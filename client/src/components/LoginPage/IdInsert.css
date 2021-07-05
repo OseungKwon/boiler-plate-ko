@@ -1,0 +1,22 @@
+.IdInsert>input::placeholder{
+    color: #BDBDBF;
+    font-size: 0.9rem;
+  
+}
+
+.IdInsert{
+    margin-top: 5rem;
+    color: #545454;
+    border-bottom: 1.5px solid #DEDEDE;
+    width: 80%;
+    display: flex;
+    align-items: center;
+}
+svg{
+    padding-bottom: 0.2em;
+}
+input{
+    padding: 10px;
+    border: none;
+    outline: none;
+}

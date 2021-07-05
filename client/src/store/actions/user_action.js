@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 // 액션 타입 정의
-const LOGIN_USER = "login_user";
+const USER_LOGIN = "login_user";
 const REGISTER_USER = "register_user";
 const AUTH_USER = "auth_user";
 
@@ -13,7 +13,7 @@ export function loginUser(dataToSubmit) {
         .then(response => response.data)
 
     return {
-        type: LOGIN_USER,
+        type: USER_LOGIN,
         payload: request
     }
 }

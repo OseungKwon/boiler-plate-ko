@@ -9,7 +9,8 @@ import {
 import LandingPage from './components/LandingPage/LandingPage'
 import LoginPage from './components/LoginPage/LoginPage';
 import RegisterPage from './components/RegisterPage/RegisterPage';
-import Auth from './hoc/auth'
+import Auth from './hoc/auth';
+import './App.css';
 
 function App() {
   return (

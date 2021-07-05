@@ -1,29 +1,34 @@
 import React, { useState } from 'react'
-import Axios from 'axios'
+// import Axios from 'axios';
 import { useDispatch } from 'react-redux';
 import { loginUser } from '../../store/actions/user_action';
 import { withRouter } from 'react-router-dom';
 
-function LoginPage(props) {
+import IdInsert from './IdInsert';
+import PwInsert from './PwInsert';
+import './LoginPage.css';
+
+
+const LoginPage = (props) => {
     const dispatch = useDispatch();
 
-    const [Email, setEmail] = useState("")
-    const [Password, setPassword] = useState("")
+    const [userid, setUserid] = useState("");
+    const [userpw, setUserpw] = useState("");
 
     const onEmailHandler = (event) => {
-        setEmail(event.currentTarget.value)
+        setUserid(event.currentTarget.value)
     }
 
     const onPasswordHandler = (event) => {
-        setPassword(event.currentTarget.value)
+        setUserpw(event.currentTarget.value)
     }
 
     const onSubmitHandler = (event) => {
         event.preventDefault();
 
         let body = {
-            email: Email,
-            password: Password
+            userID: userid,
+            userPW: userpw
         }
 
         dispatch(loginUser(body))
@@ -38,23 +43,14 @@ function LoginPage(props) {
 
     }
 
-
     return (
-        <div style={{
-            display: 'flex', justifyContent: 'center', alignItems: 'center'
-            , width: '100%', height: '100vh'
-        }}>
-            <form style={{ display: 'flex', flexDirection: 'column' }}
-                onSubmit={onSubmitHandler}
-            >
-                <label>Email</label>
-                <input type="email" value={Email} onChange={onEmailHandler} />
-                <label>Password</label>
-                <input type="password" value={Password} onChange={onPasswordHandler} />
-                <br />
-                <button type="submit">
-                    Login
-                </button>
+        <div className="wrapper">
+            <form className="LoginPage" onSubmit={onSubmitHandler}>
+                <div className="LoginTitle">Todo List</div>
+                <IdInsert onChange={onEmailHandler} />
+                <PwInsert onChange={onPasswordHandler} />
+
+                <button className="login_btn" type="submit">로그인</button>
             </form>
         </div>
     )

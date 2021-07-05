@@ -1,9 +1,8 @@
-import {
-    LOGIN_USER,
-    REGISTER_USER,
-    AUTH_USER
-} from '../_actions/types';
+const LOGIN_USER = "login_user";
+const REGISTER_USER = "register_user";
+const AUTH_USER = "auth_user";
 
+// 리듀서 함수 생성
 export default function (state = {}, action) {
     switch (action.type) {
         case LOGIN_USER:

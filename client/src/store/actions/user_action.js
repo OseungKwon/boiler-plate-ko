@@ -1,9 +1,12 @@
 import axios from 'axios';
-import {
-    LOGIN_USER,
-    REGISTER_USER,
-    AUTH_USER
-} from './types';
+
+// 액션 타입 정의
+const LOGIN_USER = "login_user";
+const REGISTER_USER = "register_user";
+const AUTH_USER = "auth_user";
+
+
+// 액션 생성 함수
 export function loginUser(dataToSubmit) {
 
     const request = axios.post('/api/users/login', dataToSubmit)
